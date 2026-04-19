@@ -1,0 +1,49 @@
+{% extends "inicio/encabezado.html" %}
+
+{% block titulo %} COMENTARIOS DE CONTACTO {% endblock %}
+
+{% block imagen %}
+{% load static %}
+{% static 'inicio/images/home.png' %}
+{% endblock %}
+
+{% block titulo_menu %}Comentarios{% endblock %}
+
+{% block contenido %}
+<!-- Contenido Principal-->
+<div class="page-content">
+
+    <!-- Encabezado -->
+    <div class="page-header">
+        <div class="page-title">
+            <h3>COMENTARIOS
+                <small>Lista de Comentarios</small>
+            </h3>
+        </div>
+    </div>
+    <!-- /Encabezado -->
+
+
+    <!-- Contenido Tabla-->
+    <!-- Tabla de Comentarios -->
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Usuario</th>
+                <th>Mensaje</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for comentario in comentarios %}
+            <tr>
+                <td class="text-semibold">{{comentario.usuario}}</td>
+                <td class="muted">{{comentario.mensaje}}</td>
+                <td class="text-center"><a href="{%url 'ConsultaIndividual' comentario.id%}">Editar</a></td>
+                <td class="text-center"><a href="{%url 'Eliminar' comentario.id%}">Eliminar</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <!-- /Tabla de comentarios -->
+</div>
+{% endblock %}
